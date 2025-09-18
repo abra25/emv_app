@@ -1,0 +1,8 @@
+[build]
+  command = "npm ci && npm run build:prod"
+  publish = "dist/employee-app" # 👈 check angular.json for exact outputPath
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

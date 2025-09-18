@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registered Employees</title>
+  
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">REGISTERED EMPLOYEES</div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let User of user">
+            <td data-label="Id">{{ User.id }}</td>
+            <td data-label="Full Name">{{ User.fullName }}</td>
+            <td data-label="Username">{{ User.username }}</td>
+            <td data-label="Phone">{{ User.phone }}</td>
+            <td data-label="Role">{{ User.gender }}</td>
+            <td data-label="Email">{{ User.email }}</td>
+            <td data-label="Action">
+              <button class="update-btn" (click)="updateUser(User.id)"><mat-icon>update</mat-icon></button>
+              <button class="delete-btn" (click)="deleteUser(User.id)"><mat-icon>delete</mat-icon></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

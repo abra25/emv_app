@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EVMS Login</title>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h4>Employee Vacation Management System</h4>
+  </div>
+
+  <!-- Login Form -->
+  <div class="container">
+    <div class="login-card">
+      <h5 class="login-title">USER LOGIN</h5>
+      <form class="p-3" (ngSubmit)="login()" #loginForm="ngForm" method="post">
+        <div class="form-group mb-3">
+            <label for="Username">Username</label>
+            <input type="email" class="form-control" [(ngModel)]="username" placeholder="Username" name="username" required>  
+        </div>
+        <div class="form-group mb-5">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" name="password" required>
+        </div>
+        <button type="submit">login</button><br>
+        <p class="signup-text">I haven't account <a routerLink="/register">Sign up</a></p>
+        
+          
+    </form>
+    <div class="form-wrapper">
+        <div *ngIf="message" [ngClass]="['custom-alert', messageClass]">
+          {{ message }}
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&#169;2025 EVMS. All rights are reserved</p>
+  </div>
+</body>
+</html>

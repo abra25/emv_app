@@ -1,0 +1,89 @@
+<div class="layout">
+  <aside class="sidebar" [class.open]="sidebarOpen">
+  <h4 class="logo">EVMS User</h4>
+  <nav>
+    <ul>
+      <li [class.active]="activeTab === 'dashboard'">
+        <a (click)="setActiveTab('dashboard')"><mat-icon>dashboard</mat-icon> Dashboard</a>
+      </li>
+      <li [class.active]="activeTab === 'request'">
+        <a (click)="setActiveTab('request')"><mat-icon>assignment</mat-icon> Request Vacation</a>
+      </li>
+      <li [class.active]="activeTab === 'myrequests'">
+        <a (click)="setActiveTab('myrequests')"><mat-icon>list_alt</mat-icon> My Requests</a>
+      </li>
+      <li>
+        <a (click)="logout()"><mat-icon>logout</mat-icon> Logout</a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+<!-- Sidebar Toggle Button -->
+<button id="menuToggle" (click)="toggleSidebar()">
+  {{ sidebarOpen ? '✖' : '☰' }}
+</button>
+
+
+  <main class="main-content">
+    <header>
+      <div class="welcome">
+        <h1>Welcome, {{ currentUser.username }}</h1>
+        <p>Your Vacation Management Dashboard</p>
+      </div>
+      <div class="date">
+        <p>Today: <strong>{{ currentDate }}</strong></p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Dashboard -->
+      <div class="content-section" *ngIf="activeTab === 'dashboard'">
+        <h2>Dashboard Overview</h2>
+        <p>Use the tabs to request or view vacation submissions.</p>
+      </div>
+
+      <!-- Request Vacation -->
+      <div class="content-section" *ngIf="activeTab === 'request'">
+        <h2>Request Vacation</h2>
+        <form (ngSubmit)="submitRequest()" class="vacation-form">
+          <label for="employee">Employee Name</label>
+          <input type="text" [(ngModel)]="vacation.user.fullName" name="employee" readonly />
+          <label for="startDate">Start Date</label>
+          <input type="date" [(ngModel)]="vacation.startDate" name="startDate" required />
+          <label for="endDate">End Date</label>
+          <input type="date" [(ngModel)]="vacation.endDate" name="endDate" required />
+          <label for="reason">Reason</label>
+          <textarea [(ngModel)]="vacation.reason" name="reason" required></textarea><br>
+          <button type="submit">Submit</button>
+        </form>
+       </div>
+            <!-- My Requests -->
+      <div class="content-section myrequests" *ngIf="activeTab === 'myrequests'">
+        <h2>My Vacation Requests</h2>
+        <div class="card-container">
+          <div class="card" *ngFor="let v of userVacations">
+            <div class="card-header">
+              <span><b>{{ currentUser.fullName }}</b></span>
+              <span class="status" [ngClass]="{
+              'pending': v.status === 'pending',
+              'approved': v.status === 'approved',
+              'rejected': v.status === 'rejected'
+              }">{{ v.status }}</span>
+            </div>
+            <div class="card-body">
+              <div><b>Requested:</b> {{ getDays(v.startDate, v.endDate) }} Days</div>
+            <div><b>From:</b> {{ v.startDate }}</div>
+            <div><b>To:</b> {{ v.endDate }}</div>
+          </div>
+          <div class="card-actions" *ngIf="v.status === 'pending'">
+            <button class="cancel-btn" (click)="cancelVacation(v.vcnId!)">Cancel</button>
+          </div>
+        </div>
+     </div>
+  </div>
+      
+      
+    </div>
+  </main>
+</div>

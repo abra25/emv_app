@@ -1,0 +1,150 @@
+body{
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .header {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .header h4 {
+    color: #17a2b8;
+    margin: 0;
+  }
+  
+  .container {
+    margin-top: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+  }
+  
+  .login-card {
+    margin-top: 5vh;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-title {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: -20px -20px 20px -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .signup-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .signup-text a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup-text a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer {
+    margin-top: 12vh;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+
+  .custom-alert {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 100%;
+    padding: 10px 10px;
+    border-radius: 12px;
+    font-weight: 400;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    animation: elertAnimate .25s linear;
+  }
+  @keyframes elertAnimate{
+    0%{
+      opacity: 0;
+      margin-top: -10px;
+    }
+    50%{
+      opacity: 0.5;
+      margin-top: -5px;
+    }
+    100%{
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+  
+  .alert-success {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .alert-error {
+    background-color: #f44336;
+    color: white;
+  }
+  .form-wrapper {
+    position: relative;
+  }
+    
+  

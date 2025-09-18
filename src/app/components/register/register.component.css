@@ -1,0 +1,127 @@
+.page-wrapper {
+    max-width: 100%;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .header h4 {
+    color: #17a2b8;
+    margin: 0;
+  }
+  
+  .form-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  .form-group .genders{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .form-group select {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 83%;
+  }
+  .form-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .form-footer button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .form-footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .form-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .custom-alert {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    min-width: 300px;
+    max-width: 90%;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    animation: elertAnimate .25s linear;
+  }
+  @keyframes elertAnimate{
+    0%{
+      opacity: 0;
+      margin-top: -10px;
+    }
+    50%{
+      opacity: 0.5;
+      margin-top: -5px;
+    }
+    100%{
+      opacity: 1;
+      margin-top: 0;
+    }
+  } 
+  
+  .alert-success {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .alert-error {
+    background-color: #f44336;
+    color: white;
+  }
+  

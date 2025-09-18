@@ -1,0 +1,124 @@
+<div class="main-container">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+    <h4 class="logo">Admin -Panel</h4>
+    <nav>
+      <ul>
+        <li [class.active]="activeLink === 'dashboard'">
+          <a routerLink="dashboard" (click)="setActive('dashboard')">🏠 Dashboard</a>
+        </li>
+        <li [class.active]="activeLink === 'employees'">
+          <a routerLink="employees" (click)="setActive('employees')">👥 Manage Users</a>
+        </li>
+        <li [class.active]="activeLink === 'vacations'">
+          <a routerLink="vacation" (click)="setActive('vacations')">
+            📄 Approve Vacations <span class="badge">{{ pendingVacations.length }}</span>
+          </a>
+        </li>
+        <!-- ✅ Renamed tab -->
+        <li [class.active]="activeLink === 'approved'">
+          <a (click)="setActive('approved')">✅ Approved Vacations</a>
+        </li>
+
+        <!-- Settings Dropdown -->
+        <li class="dropdown-sidebar" [class.open]="dropdownOpen">
+          <a (click)="toggleSettingsDropdown()">
+            ⚙️ Settings <span class="arrow">▼</span>
+          </a>
+          <ul class="dropdown-items">
+            <li><a>Profile Settings</a></li>
+            <li><a>System Preferences</a></li>
+            <li><a>Notification Settings</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#" (click)="logout()">🚪 Logout</a></li>
+      </ul>
+
+      <button id="menuToggle" (click)="toggleSidebar()">
+        {{ sidebarOpen ? '✖' : '☰' }}
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header>
+      <div class="admin-info">Welcome, Admin</div>
+      <p>Today: <strong>{{ currentDate }}</strong></p>
+    </header>
+
+    <!-- Dashboard View -->
+    <ng-container *ngIf="activeLink === 'dashboard'">
+      <section class="cards">
+        <div class="card clickable" (click)="goTo('employees')">
+          <h3>Total Employees</h3>
+          <p>{{ totalEmployees }}</p>
+        </div>
+        <div class="card clickable" (click)="goTo('vacation')">
+          <h3>Pending Vacations</h3>
+          <p>{{ pendingVacations.length }}</p>
+        </div>
+        <div class="card clickable" (click)="goTo('approved')">
+          <h3>Approved Requests</h3>
+          <p>{{ approvedCount }}</p>
+        </div>
+      </section>
+      <section class="content">
+        <div class="search-bar">
+          <input type="text" [(ngModel)]="searchQuery" placeholder="🔍 Search users..." />
+        </div>
+        <h2>Vacation Requests</h2>
+        <ul class="activity">
+          <li *ngFor="let vacation of pendingVacations">
+            {{ vacation.user.fullName }} - 
+            {{ getDays(vacation.startDate, vacation.endDate) }} Days
+            <button class="approve-btn" (click)="openModal(vacation)">Review</button>
+          </li>
+        </ul>
+      </section>
+    </ng-container>
+    <ng-container *ngIf="activeLink === 'approved'">
+      <section class="content">
+        <h2>Approved Vacation Requests</h2>
+        <div class="table-container">
+          <table class="vacation-table">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Days</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let v of approvedVacations">
+                <td>{{ v.user.fullName }}</td>
+                <td>{{ v.startDate }}</td>
+                <td>{{ v.endDate }}</td>
+                <td>{{ getDays(v.startDate, v.endDate) }}</td>
+                <td>{{ v.reason }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </ng-container>
+
+    <!-- Other Routed Views -->
+    <router-outlet *ngIf="activeLink !== 'dashboard' && activeLink !== 'approved'"></router-outlet>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="modalVisible">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h3>Review Request: {{ modalUser }}</h3>
+      <p>Do you want to approve or reject this vacation request?</p>
+      <button class="btn approve" (click)="confirmAction('approved')">Approve</button>
+      <button class="btn reject" (click)="confirmAction('rejected')">Reject</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<header>
+  <h1>Vacation Approval Panel</h1>
+</header>
+<div class="main-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search employee...">
+  </div>
+  <div class="requests-grid">
+    <div *ngFor="let vac of vacations" class="request-card">
+      <div class="request-header">
+        <p><strong>Employee: </strong><em>{{ vac.user.fullName }}</em></p>
+      <div class="status">{{ vac.status }}</div>
+      </div>
+      <div class="details">
+        <p><strong>Requested: </strong>{{getDays(vac.startDate,vac.endDate)}}Days</p>
+        <p><strong>From:</strong> {{ vac.startDate }}</p>
+        <p><strong>To:</strong> {{ vac.endDate }}</p>
+        <p class="reason"><strong>reason: </strong><em>"{{vac.reason}}"</em></p>
+      </div>
+      <div class="actions">
+        <button class="btn approve" (click)="approve(vac.vcnId)">Approve</button>
+        <button class="btn reject" (click)="reject(vac.vcnId)">Reject</button>
+      </div>
+    </div>
+  </div>
+</div>
