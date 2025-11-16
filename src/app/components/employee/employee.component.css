@@ -82,7 +82,7 @@ body {
 
 .dropdown-items li {
   margin: 0 0 -5px 0;
-  padding: 0;
+  padding: 5px 0;
 }
 
 .dropdown-items li a {
