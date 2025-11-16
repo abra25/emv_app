@@ -2,15 +2,14 @@
   "name": "employee-app",
   "version": "0.0.0",
   "scripts": {
-  "ng": "ng",
-  "start": "ng serve",
-  "build": "ng build",
-  "prebuild": "node ./src/scripts/gn-config.js",
-  "build:prod": "node ./src/scripts/gn-config.js && ng build --configuration=production",
-  "watch": "ng build --watch --configuration development",
-  "test": "ng test"
-}
-,
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "prebuild": "node ./src/scripts/gn-config.js",
+    "build:prod": "node ./src/scripts/gn-config.js && ng build --configuration=production",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
   "private": true,
   "dependencies": {
     "@angular/cdk": "^19.2.18",
@@ -25,6 +24,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.6",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.26.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

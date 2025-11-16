@@ -147,10 +147,21 @@ body{
     position: relative;
   }
 
+  .footer p a:active{
+    color: #f44336;
+  }
+
   @media (max-width: 670px) {
     .header h4 {
       font-size: 18px;
     } 
+    .footer p{
+      font-size: 12px;
+    }
+    .footer p a{
+      text-decoration: none;
+      
+    }
   }
     
   

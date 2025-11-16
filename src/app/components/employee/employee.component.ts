@@ -5,6 +5,8 @@ import { UserService } from '../../services/user.service';
 import { AutoLogoutService } from '../../services/auto-logout.service';
 import { VacationService } from '../../services/vacation.service';
 import { Vacation } from '../../model/Vacation';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-employee',
@@ -90,25 +92,34 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   if (!this.currentUser?.id) return;
 
   const payload: Vacation = {
-     // Use null to allow auto-increment
     startDate: this.vacation.startDate,
     endDate: this.vacation.endDate,
     reason: this.vacation.reason,
-    status: 'pending' as 'pending',  
+    status: 'pending',
     user: { id: this.currentUser.id },
     totalDays: this.getDays(this.vacation.startDate, this.vacation.endDate)
   };
 
   this.vacationService.newVacation(payload).subscribe({
     next: () => {
-      alert("Vacation request submitted successfully");
-      // optionally reset the form
+      Swal.fire({
+        icon: 'success',
+        title: 'Request Submitted!',
+        text: 'Your vacation request has been sent successfully.',
+      });
+      this.resetForm();
     },
     error: (err) => {
       console.error("Vacation submission failed", err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Submission Failed',
+        text: 'Could not submit your request. Try again.',
+      });
     }
   });
 }
+
 
 
   loadUserVacations(): void {
@@ -132,19 +143,40 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   }
 
   cancelVacation(vcnId: number): void {
-    if (confirm('Are you sure you want to cancel this vacation request?')) {
+  Swal.fire({
+    title: 'Cancel Request?',
+    text: 'Are you sure you want to cancel this vacation request?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, cancel it'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      
       this.vacationService.deleteVacation(vcnId).subscribe({
         next: () => {
-          alert('Vacation submission canceled.');
-          this.loadUserVacations(); // Refresh the list
+          Swal.fire({
+            icon: 'success',
+            title: 'Canceled',
+            text: 'Vacation request has been canceled.',
+          });
+          this.loadUserVacations();
         },
         error: (err) => {
           console.error('Cancel failed:', err);
-          alert('Failed to cancel vacation.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to cancel vacation.',
+          });
         }
       });
+
     }
-  }
+  });
+}
+
 
   logout() {
     localStorage.removeItem('currentUser');
