@@ -35,6 +35,7 @@ body {
   font-size: 1.3rem;
 }
 
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -81,8 +82,8 @@ body {
 }
 
 .dropdown-items li {
-  margin: 0 0 -5px 0;
-  padding: 5px 0;
+  margin: 0;
+  padding: 7px 0;
 }
 
 .dropdown-items li a {
@@ -276,7 +277,7 @@ form button {
   }
   .logo{
     margin-left: 60px;
-    font-size: 1.3rem;
+    font-size: 0.9rem;
   }
   .sidebar.open {
     left: 0;
