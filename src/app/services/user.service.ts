@@ -7,7 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-private baseUrl='http://localhost:9192/evs/users';
+private baseUrl='https://emvbackend-production.up.railway.app/evs/users';
   users: User[] = [];
 
   constructor(private http:HttpClient) { }

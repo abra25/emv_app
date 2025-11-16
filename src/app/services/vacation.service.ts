@@ -7,7 +7,7 @@
     providedIn: 'root'
   })
   export class VacationService {
-    private baseUrl='http://localhost:9192/evs/vacations';
+    private baseUrl='https://emvbackend-production.up.railway.app/evs/vacations';
 
     vacation: Vacation[] = [];
 
