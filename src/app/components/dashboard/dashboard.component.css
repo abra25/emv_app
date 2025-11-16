@@ -291,12 +291,12 @@ header {
   width: 100%;
   position: relative;
   z-index: 1;
-  padding-left: 0;
+  padding-left: 10px;
   }
-  header .admin-info {
+  .main-container .admin-info {
     margin-left: 20px;
 }
-header p{
+.main-container p{
     font-size: 0.9em;
     font-weight: 400;
 }
