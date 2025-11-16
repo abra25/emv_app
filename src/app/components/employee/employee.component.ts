@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 export class EmployeeComponent implements OnInit, OnDestroy {
   activeTab: string = 'dashboard';
   sidebarOpen = true;
+  dropdownOpen = false;
   userVacations: Vacation[] = [];
   vacation: Vacation = new Vacation();
   currentUser!: User;
@@ -176,7 +177,9 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     }
   });
 }
-
+  toggleSettingsDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
 
   logout() {
     localStorage.removeItem('currentUser');
