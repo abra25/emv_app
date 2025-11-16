@@ -146,5 +146,11 @@ body{
   .form-wrapper {
     position: relative;
   }
+
+  @media (max-width: 670px) {
+    .header h4 {
+      font-size: 18px;
+    } 
+  }
     
   
