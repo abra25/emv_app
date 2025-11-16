@@ -266,7 +266,7 @@ form button {
 
  .sidebar {
     position: fixed;
-    top: 0;
+    top: 10px;  
     padding-top: 40px;
     left: -240px;
     width: 240px;

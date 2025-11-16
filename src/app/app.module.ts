@@ -16,6 +16,10 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 
@@ -29,6 +33,10 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     EmployeeListComponent,
     EmployeeComponent,
     UpdateUserComponent,
+    ProfileComponent,
+    PreferencesComponent,
+    NotificationComponent,
+    NotificationsComponent,
   
   ],
   imports: [
