@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class EmployeeComponent implements OnInit, OnDestroy {
   activeTab: string = 'dashboard';
-  sidebarOpen = true;
+  sidebarOpen = false;
   dropdownOpen = false;
   userVacations: Vacation[] = [];
   vacation: Vacation = new Vacation();

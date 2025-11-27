@@ -16,7 +16,7 @@ import { VacationService } from '../../services/vacation.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  sidebarOpen = true;
+  sidebarOpen = false;
   dropdownOpen = false;
   activeLink = 'dashboard';
   currentDate: string = '';
