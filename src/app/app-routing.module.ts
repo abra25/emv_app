@@ -14,20 +14,20 @@ import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {
-    path: '/admin',
+    path: 'admin',
     component: DashboardComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: '/dashboard', component: EmployeeListComponent },  
-      { path: '/employees', component: EmployeeListComponent },
-      { path: '/vacation', component: VacationComponent }
+      { path: 'dashboard', component: EmployeeListComponent },  
+      { path: 'employees', component: EmployeeListComponent },
+      { path: 'vacation', component: VacationComponent }
     ]
   },
-  {path:'/employee',component:EmployeeComponent},
-  {path:'/register',component:RegisterComponent},
-  { path: '/update-user/:id', component: UpdateUserComponent },
+  {path:'employee',component:EmployeeComponent},
+  {path:'register',component:RegisterComponent},
+  { path: 'update-user/:id', component: UpdateUserComponent },
   { path: '**', redirectTo: '' } ,// Wildcard route for a 404 page 
-  { path: '/profile', component:ProfileComponent}
+  { path: 'profile', component:ProfileComponent}
 
 ];
 
