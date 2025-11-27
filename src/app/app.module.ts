@@ -14,7 +14,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
-import { NotificationComponent } from './components/notification/notification.component';
+
 import { NotificationsComponent } from './components/notifications/notifications.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // ✅ add ReactiveFormsModule
@@ -39,7 +39,6 @@ import { MatInputModule } from '@angular/material/input'; // ✅ add if using ma
     UpdateUserComponent,
     ProfileComponent,
     PreferencesComponent,
-    NotificationComponent,
     NotificationsComponent,
   ],
   imports: [
