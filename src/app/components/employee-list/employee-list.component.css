@@ -109,7 +109,7 @@ td button {
 
 .search-input:focus {
   outline: none;
-  border-color: #1278fd;
+  border-color: #07ad68;
   box-shadow: 0 0 5px rgba(18, 120, 253, 0.3);
 }
 
@@ -172,6 +172,12 @@ td button {
     min-width: 650px;
   }
 
+
+  .search-input{
+    padding: 5px 8px;
+
+  }
+  
   th, td {
     padding: 8px;
   }
