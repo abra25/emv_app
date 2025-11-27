@@ -68,6 +68,11 @@ html, body {
   border-radius: 5px;
 }
 
+#menuToggle {
+  display: none;
+}
+
+
 .badge {
   background: red;
   color: white;
@@ -94,6 +99,40 @@ header {
   margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
 }
+@media (max-width: 768px) {
+  .sidebar {
+    left: -240px;     /* Hidden by default */
+    transition: left 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    left: 0;          /* Slide in when toggled */
+  }
+
+  .main-container {
+    padding-left: 0;  /* No sidebar space on mobile */
+  }
+
+  /* Toggle button visible only on mobile */
+  #menuToggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+}
+#menuToggle {
+  display: none;
+}
+
 
 .cards {
   display: flex;
@@ -210,6 +249,7 @@ header {
 .btn:hover {
   opacity: 0.9;
 }
+
 
 /* Toggle button */
 #menuToggle {
