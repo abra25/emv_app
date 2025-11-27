@@ -9,30 +9,30 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
-
-
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  { path: '', component: LoginComponent },
+
   {
     path: 'admin',
     component: DashboardComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: EmployeeListComponent },  
+      { path: 'dashboard', component: EmployeeListComponent },
       { path: 'employees', component: EmployeeListComponent },
       { path: 'vacation', component: VacationComponent }
     ]
   },
-  {path:'employee',component:EmployeeComponent},
-  {path:'register',component:RegisterComponent},
-  { path: 'update-user/:id', component: UpdateUserComponent },
-  { path: '**', redirectTo: '' } ,// Wildcard route for a 404 page 
-  { path: 'profile', component:ProfileComponent}
 
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'update-user/:id', component: UpdateUserComponent },
+  { path: 'profile', component: ProfileComponent },
+
+  { path: '**', redirectTo: '' } // Wildcard route for 404
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

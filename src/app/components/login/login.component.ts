@@ -30,11 +30,11 @@ export class LoginComponent {
 
       setTimeout(() => {
         if (user.email === 'mahirabrahman18@gmail.com' || user.email === 'muzakkir@gmail.com') {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin/dashboard']);
         } else {
           this.router.navigate(['/employee']);
         }
-      }, 1000);
+      }, 500);
     },
     error: (err) => {
       this.showMessage('Login failed: Invalid username or password', 'error');
