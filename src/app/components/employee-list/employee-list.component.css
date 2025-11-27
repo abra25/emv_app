@@ -1,13 +1,16 @@
- body {
+/* -----------------------------
+   Global Styles
+------------------------------- */
+body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
 }
 
-/* Container */
+/* Container - left aligned with 5px spacing */
 .container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 20px 0 20px 5px; /* top/bottom 20px, left 5px */
   padding: 10px;
 }
 
@@ -19,6 +22,7 @@
   overflow: hidden;
 }
 
+/* Card Header */
 .card-header {
   background-color: #fff;
   color: #1e3a8a;
@@ -28,8 +32,9 @@
   border-bottom: 1px solid #ccc;
 }
 
+/* Card Body */
 .card-body {
-  padding: 0;
+  padding: 10px;
   overflow-x: auto; /* KEY FOR RESPONSIVE TABLE */
 }
 
@@ -38,7 +43,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-size: 16px;
-  min-width: 750px;  /* prevents squashed columns on mobile */
+  min-width: 750px;
 }
 
 thead {
@@ -56,7 +61,7 @@ th {
   color: #1278fd;
 }
 
-/* Buttons */
+/* Buttons inside table */
 td button {
   padding: 4px 6px;
   margin: 0 5px;
@@ -64,14 +69,91 @@ td button {
   border-radius: 4px;
   color: white;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .update-btn {
   background-color: #28a745;
 }
 
+.update-btn:hover {
+  background-color: #218838;
+}
+
 .delete-btn {
   background-color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* -----------------------------
+   Table Controls (Search & Filter)
+-------------------------------- */
+.table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  flex: 1 1 200px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1278fd;
+  box-shadow: 0 0 5px rgba(18, 120, 253, 0.3);
+}
+
+.table-controls select {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.table-controls select:focus {
+  outline: none;
+  border-color: #1278fd;
+}
+
+/* -----------------------------
+   Pagination
+-------------------------------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1278fd;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0f62d0;
 }
 
 /* -----------------------------
@@ -97,6 +179,11 @@ td button {
     padding: 4px 6px;
     font-size: 13px;
   }
+
+  .table-controls {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
 
 /* Mobile */
@@ -106,7 +193,6 @@ td button {
     text-align: center;
   }
 
-  /* Reduce table size but KEEP IT AS TABLE */
   table {
     font-size: 12px;
     min-width: 600px;
@@ -123,5 +209,18 @@ td button {
 
   tr {
     line-height: 1.2;
+  }
+
+  .table-controls {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .search-input, .table-controls select {
+    width: 100%;
+  }
+
+  .pagination {
+    gap: 5px;
   }
 }
