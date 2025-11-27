@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registered Employees</title>
-  
-</head>
-<body>
-
 <div class="container">
   <div class="card">
     <div class="card-header">REGISTERED EMPLOYEES</div>
     <div class="card-body">
+
+      <!-- Search & Filter -->
+      <div class="table-controls">
+        <input type="text" placeholder="Search by name, username, email..." [(ngModel)]="searchTerm" (input)="filterUsers()" class="search-input">
+
+        <select [(ngModel)]="genderFilter" (change)="filterUsers()">
+          <option value="">All Genders</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <!-- Table -->
       <table>
         <thead>
           <tr>
@@ -25,23 +28,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let User of user">
-            <td data-label="Id">{{ User.id }}</td>
-            <td data-label="Full Name">{{ User.fullName }}</td>
-            <td data-label="Username">{{ User.username }}</td>
-            <td data-label="Phone">{{ User.phone }}</td>
-            <td data-label="Gender">{{ User.gender }}</td>
-            <td data-label="Email">{{ User.email }}</td>
-            <td data-label="Action">
-              <button class="update-btn" (click)="updateUser(User.id)"><mat-icon>update</mat-icon></button>
-              <button class="delete-btn" (click)="deleteUser(User.id)"><mat-icon>delete</mat-icon></button>
+          <tr *ngFor="let user of pagedUsers">
+            <td>{{ user.id }}</td>
+            <td>{{ user.fullName }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button class="update-btn" (click)="updateUser(user.id)"><mat-icon>update</mat-icon></button>
+              <button class="delete-btn" (click)="deleteUser(user.id)"><mat-icon>delete</mat-icon></button>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <!-- Pagination Controls -->
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{currentPage}} of {{totalPages}}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+
     </div>
   </div>
 </div>
-
-</body>
-</html>

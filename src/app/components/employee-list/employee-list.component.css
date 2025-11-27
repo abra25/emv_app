@@ -4,14 +4,12 @@ body {
   background: #f4f4f4;
 }
 
-/* Container */
 .container {
   max-width: 1200px;
   margin: 20px auto;
   padding: 10px;
 }
 
-/* Card wrapper */
 .card {
   background: #fff;
   border-radius: 8px;
@@ -30,7 +28,7 @@ body {
 
 .card-body {
   padding: 0;
-  overflow-x: auto; /* KEY FOR RESPONSIVE TABLE */
+  overflow-x: auto;
 }
 
 /* Table */
@@ -38,7 +36,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-size: 16px;
-  min-width: 750px;  /* prevents squashed columns on mobile */
+  min-width: 700px;
 }
 
 thead {
@@ -56,7 +54,6 @@ th {
   color: #1278fd;
 }
 
-/* Buttons */
 td button {
   padding: 4px 6px;
   margin: 0 5px;
@@ -74,11 +71,51 @@ td button {
   background-color: #dc3545;
 }
 
-/* -----------------------------
-   Responsive Design
--------------------------------- */
+/* Controls */
+.table-controls {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
 
-/* Tablets */
+.search-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1 1 200px;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #1278fd;
+  background-color: #fff;
+  color: #1278fd;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .card-header {
     font-size: 20px;
@@ -94,19 +131,17 @@ td button {
   }
 
   td button {
-    padding: 4px 6px;
+    padding: 4px 5px;
     font-size: 13px;
   }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
   .card-header {
     font-size: 18px;
     text-align: center;
   }
 
-  /* Reduce table size but KEEP IT AS TABLE */
   table {
     font-size: 12px;
     min-width: 600px;
