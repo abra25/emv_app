@@ -105,6 +105,11 @@ header {
     transition: left 0.3s ease-in-out;
   }
 
+  .main-container{
+    padding-left: 0;  /* No sidebar space on mobile */
+    
+  }
+
   .sidebar.open {
     left: 0;          /* Slide in when toggled */
   }
