@@ -1,130 +1,154 @@
+/* =========================
+   GLOBAL STYLES
+   ========================= */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-  }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
 
-  .container {
-    max-width: 1200px;
-    margin: 20px auto;
+/* Page container */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #fff;
+  color: #1e3a8a;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body {
+  padding: 0;
+  overflow-x: auto;
+}
+
+/* =========================
+   TABLE BASE
+   ========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+thead {
+  background-color: #f1f1f1;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  font-weight: bold;
+  color: #1278fd;
+}
+
+/* Buttons */
+td button {
+  padding: 5px 8px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.update-btn {
+  background-color: #28a745;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+}
+
+/* =========================
+   RESPONSIVE IMPROVEMENTS
+   ========================= */
+@media (max-width: 768px) {
+  th,
+  td {
     padding: 10px;
   }
 
-  .card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-
-  .card-header {
-    background-color: #fff;
-    color: #1e3a8a;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 16px;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .card-body {
-    padding: 0;
-    overflow-x: auto;
-  }
-
   table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 16px;
-  }
-
-  thead {
-    background-color: #f1f1f1;
-  }
-
-  th, td {
-    padding: 12px 10px;
-    text-align: left;
-    border: 1px solid #ccc;
-  }
-
-  th {
-    font-weight: bold;
-    color: #1278fd;
+    font-size: 14px;
   }
 
   td button {
-    padding: 3px 5px 3px 5px;
-    margin: 0 5px;
+    padding: 4px 6px;
+  }
+}
+
+/* =========================
+   FULL MOBILE STACKED TABLE
+   (Not card style — clean table view)
+   ========================= */
+@media (max-width: 600px) {
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table header */
+  thead {
+    display: none;
+  }
+
+  /* Each row becomes a block */
+  tr {
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  /* Table cells */
+  td {
     border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    line-height: 4px;
-    text-align: center;
+    padding: 8px 0;
+    position: relative;
+    display: flex;
+    gap: 5px;
   }
 
-  .update-btn {
-    background-color: #28a745;
+  /* Label before the value */
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+    width: 130px;
+    flex-shrink: 0;
   }
 
-  .delete-btn {
-    background-color: #dc3545;
+  /* Action buttons spacing */
+  td button {
+    margin-top: 5px;
   }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .card-header {
-      font-size: 20px;
-    }
-
-    table {
-      font-size: 14px;
-    }
-
-    th, td {
-      padding: 8px;
-    }
-
-    td button {
-      padding: 4px 8px;
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .card-header {
-      font-size: 18px;
-      text-align: center;
-    }
-
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-
-    thead {
-      display: none;
-    }
-
-    tr {
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: #fff;
-      padding: 10px;
-    }
-   
-
-    td {
-      border: none;
-      padding: 8px 0;
-      position: relative;
-    }
-
-    td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      display: block;
-      margin-bottom: 4px;
-      color: #555;
-    }
-  }
+}
