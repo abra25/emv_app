@@ -1,127 +1,282 @@
-.page-wrapper {
-    max-width: 100%;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .header {
-    background-color: #f8f8f8;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .header h4 {
-    color: #17a2b8;
-    margin: 0;
-  }
-  
-  .form-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .form-card {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    display: flex;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #17a2b8;
+}
+
+.header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+}
+
+/* MAIN SECTION */
+.register-section {
+  display: flex;
+  gap: 50px;
+  padding: 60px 8%;
+  align-items: center;
+}
+
+/* LEFT INFO */
+.register-info {
+  flex: 1;
+}
+
+.register-info h1 {
+  font-size: 38px;
+  color: #17a2b8;
+}
+
+.register-info p {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.benefits {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.benefits li {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* FORM */
+.form-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 15px 30px rgba(0,0,0,.12);
+}
+
+.form-card h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #17a2b8;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #17a2b8;
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #218838;
+}
+
+/* LOGIN LINK */
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* ALERT */
+.custom-alert {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 280px;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn .3s ease;
+}
+
+.alert-success {
+  background: #4caf50;
+  color: white;
+}
+
+.alert-error {
+  background: #f44336;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; margin-top: -10px; }
+  to { opacity: 1; margin-top: 0; }
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1fdff;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .register-section {
     flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  .form-group label {
-    font-weight: 400;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  .form-group .genders{
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  .form-group select {
-    padding: 5px;
-    margin-left: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 83%;
-  }
-  .form-footer {
     text-align: center;
-    margin-top: 20px;
   }
-  
-  .form-footer button {
-    padding: 8px 16px;
-    background-color: #4caf50;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+
+  .register-info h1 {
+    font-size: 30px;
   }
-  
-  .form-footer a {
-    color: #007bff;
-    text-decoration: none;
+}
+
+/* VALIDATION */
+small {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* PASSWORD TOGGLE */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 60px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #17a2b8;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-password:hover {
+  text-decoration: underline;
+}
+
+/* DISABLED BUTTON */
+button:disabled {
+  background: #9ccc9c;
+  cursor: not-allowed;
+}
+
+/* Password toggle */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 60px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #17a2b8;
+  cursor: pointer;
+}
+
+/* Remember Me */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  accent-color: #17a2b8;
+  cursor: pointer;
+}
+
+/* SweetAlert2 toast responsive */
+.swal-toast {
+  width: 90% !important;
+  max-width: 400px !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 600px) {
+  .swal-toast {
+    width: 95% !important;
   }
-  
-  .form-footer a:hover {
-    text-decoration: underline;
-  }
-  
-  .custom-alert {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    min-width: 300px;
-    max-width: 90%;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    transition: opacity 0.3s ease;
-    animation: elertAnimate .25s linear;
-  }
-  @keyframes elertAnimate{
-    0%{
-      opacity: 0;
-      margin-top: -10px;
-    }
-    50%{
-      opacity: 0.5;
-      margin-top: -5px;
-    }
-    100%{
-      opacity: 1;
-      margin-top: 0;
-    }
-  } 
-  
-  .alert-success {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .alert-error {
-    background-color: #f44336;
-    color: white;
-  }
-  
+}
+

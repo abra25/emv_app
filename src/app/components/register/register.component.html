@@ -1,54 +1,180 @@
-<div class="page-wrapper">
-    <div class="header">
-      <h4>Employee Vacation Management System</h4>
+<div class="register-page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">EVMS</div>
+    <nav>
+      <a routerLink="/">Home</a>
+      <a routerLink="/login">Login</a>
+    </nav>
+  </header>
+
+  <!-- MAIN SECTION -->
+  <section class="register-section">
+
+    <!-- INFO -->
+    <div class="register-info">
+      <h1>Create Your EVMS Account</h1>
+      <p>
+        Register to submit vacation requests, track approvals,
+        and manage your leave records securely.
+      </p>
+
+      <ul class="benefits">
+        <li>✔ Secure Account</li>
+        <li>✔ Fast Approval Workflow</li>
+        <li>✔ Real-time Notifications</li>
+        <li>✔ Mobile Friendly</li>
+      </ul>
     </div>
-  
+
+    <!-- FORM -->
     <div class="form-wrapper">
-      <!-- Inline message box -->
+
+      <!-- ALERT -->
       <div *ngIf="message" [ngClass]="['custom-alert', messageClass]">
         {{ message }}
       </div>
-  
+
       <div class="form-card">
-        <form (ngSubmit)="newUser()" #form="ngForm">
+        <h3>Register</h3>
+
+        <form #form="ngForm" (ngSubmit)="newUser()">
+
+          <!-- FULL NAME -->
           <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" [(ngModel)]="user.fullName" name="fullName" placeholder="Enter Full Name" required>
+            <label>Full Name</label>
+            <input type="text"
+                   name="fullName"
+                   [(ngModel)]="user.fullName"
+                   #fullName="ngModel"
+                   required
+                   minlength="3"
+                   placeholder="John Doe">
+
+            <small *ngIf="fullName.invalid && fullName.touched">
+              Full name is required (min 3 characters)
+            </small>
           </div>
-  
+
+          <!-- USERNAME -->
           <div class="form-group">
-            <label for="username">User Name</label>
-            <input type="text" [(ngModel)]="user.username" name="username" placeholder="Enter Username" required>
+            <label>Username</label>
+            <input type="text"
+                   name="username"
+                   [(ngModel)]="user.username"
+                   #username="ngModel"
+                   required
+                   minlength="4"
+                   placeholder="john_doe">
+
+            <small *ngIf="username.invalid && username.touched">
+              Username must be at least 4 characters
+            </small>
           </div>
-  
+
+          <!-- PHONE -->
           <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" [(ngModel)]="user.phone" name="phone" placeholder="Enter Phone" required>
+            <label>Phone</label>
+            <input type="text"
+                   name="phone"
+                   [(ngModel)]="user.phone"
+                   #phone="ngModel"
+                   required
+                   pattern="^[0-9+ ]{9,15}$"
+                   placeholder="+255 xxx xxx xxx">
+
+            <small *ngIf="phone.invalid && phone.touched">
+              Enter a valid phone number
+            </small>
           </div>
-  
+
+          <!-- EMAIL -->
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" [(ngModel)]="user.password" name="password" placeholder="Enter Password" required>
+            <label>Email</label>
+            <input type="email"
+                   name="email"
+                   [(ngModel)]="user.email"
+                   #email="ngModel"
+                   required
+                   placeholder="example@email.com">
+
+            <small *ngIf="email.invalid && email.touched">
+              Enter a valid email address
+            </small>
           </div>
-          <div class="form-group">
-            <div class="genders" >Gender: 
-              <select name="gender" [(ngModel)]="user.gender" id="gender" required>
-                <option value="">--select--</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
+
+          <!-- PASSWORD -->
+          <div class="form-group password-group">
+            <label>Password</label>
+
+            <div class="password-wrapper">
+              <input [type]="showPassword ? 'text' : 'password'"
+                     name="password"
+                     [(ngModel)]="user.password"
+                     #password="ngModel"
+                     required
+                     minlength="6"
+                     placeholder="Create password">
+
+              <span class="toggle-password"
+                    (click)="togglePassword()">
+                {{ showPassword ? 'Hide' : 'Show' }}
+              </span>
             </div>
+
+            <small *ngIf="password.invalid && password.touched">
+              Password must be at least 6 characters
+            </small>
           </div>
+
+          <div class="form-group remember-me">
+           <label class="remember-label">
+           <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+          Remember Me
+           </label>
+          </div>
+
+
+          <!-- GENDER -->
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" [(ngModel)]="user.email" name="email" placeholder="Enter Email" required>
+            <label>Gender</label>
+            <select name="gender"
+                    [(ngModel)]="user.gender"
+                    #gender="ngModel"
+                    required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+
+            <small *ngIf="gender.invalid && gender.touched">
+              Please select gender
+            </small>
           </div>
-          <div class="form-footer">
-            <button type="submit">Register</button>
-            <small>I have an account <a routerLink="">Login</a></small>
-          </div>
+
+          <!-- SUBMIT -->
+          <button type="submit" [disabled]="form.invalid">
+            Register
+          </button>
+
+          <p class="login-link">
+            Already have an account?
+            <a routerLink="/login">Login</a>
+          </p>
+
         </form>
       </div>
     </div>
-  </div>
-  
+  </section>
+
+ <!-- Footer -->
+  <footer class="footer">
+    <p>
+      © 2025 Employee Vacation Management System <br>
+      Designed & Developed by
+      <a href="https://abra25.github.io/solidy/" target="_blank">mrsolidy</a>
+    </p>
+  </footer>
+
+</div>

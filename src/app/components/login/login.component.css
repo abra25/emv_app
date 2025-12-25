@@ -1,167 +1,326 @@
-body{
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
-  
-  .header {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  .header h4 {
-    color: #17a2b8;
-    margin: 0;
-  }
-  
-  .container {
-    margin-top: 6vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-  }
-  
-  .login-card {
-    margin-top: 5vh;
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 350px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-title {
-    background-color: #17a2b8;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    margin: -20px -20px 20px -20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    width: 100%;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  .signup-text {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  
-  .signup-text a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .signup-text a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer {
-    margin-top: 12vh;
-    text-align: center;
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-  .custom-alert {
+body {
+  background: #f4f7fb;
+  color: #333;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  position: relative;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #17a2b8;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+}
+
+.btn-outline {
+  border: 1px solid #17a2b8;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: #17a2b8;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  gap: 40px;
+  padding: 60px 8%;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 38px;
+  color: #17a2b8;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.hero-stats h3 {
+  color: #28a745;
+}
+
+/* LOGIN CARD */
+.login-card {
+  width: 360px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.login-title {
+  background: #17a2b8;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+input:focus {
+  border-color: #17a2b8;
+  outline: none;
+}
+
+/* PASSWORD TOGGLE */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 60px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #17a2b8;
+  cursor: pointer;
+}
+
+/* VALIDATION */
+small {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #9ccc9c;
+  cursor: not-allowed;
+}
+
+/* FEATURES */
+.features {
+  background: white;
+  padding: 60px 8%;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.feature-card {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  transition: transform .3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ALERT */
+.custom-alert {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.alert-success { background: #4caf50; color: white; }
+.alert-error { background: #f44336; color: white; }
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1fdff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hamburger { display: block; }
+
+  .nav {
     position: absolute;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    min-width: 300px;
-    max-width: 100%;
-    padding: 10px 10px;
-    border-radius: 12px;
-    font-weight: 400;
+    top: 60px;
+    right: 8%;
+    background: white;
+    flex-direction: column;
+    width: 220px;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    border-radius: 10px;
+  }
+
+  .nav.active { display: flex; }
+
+  .nav a {
+    padding: 12px;
+    width: 100%;
     text-align: center;
-    transition: opacity 0.3s ease;
-    animation: elertAnimate .25s linear;
-  }
-  @keyframes elertAnimate{
-    0%{
-      opacity: 0;
-      margin-top: -10px;
-    }
-    50%{
-      opacity: 0.5;
-      margin-top: -5px;
-    }
-    100%{
-      opacity: 1;
-      margin-top: 0;
-    }
-  }
-  
-  .alert-success {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .alert-error {
-    background-color: #f44336;
-    color: white;
-  }
-  .form-wrapper {
-    position: relative;
+    border-bottom: 1px solid #eee;
   }
 
-  .footer p a:active{
-    color: #f44336;
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* ===========================
+   SWEETALERT RESPONSIVE UI
+=========================== */
+
+.swal-responsive {
+  width: 420px !important;
+  border-radius: 14px !important;
+  padding: 20px !important;
+}
+
+/* Buttons */
+.swal2-confirm {
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+}
+
+/* Title */
+.swal2-title {
+  font-size: 22px !important;
+}
+
+/* Text */
+.swal2-html-container {
+  font-size: 15px !important;
+}
+
+/* Loader */
+.swal2-loader {
+  border-color: #17a2b8 transparent #17a2b8 transparent !important;
+}
+
+/* ===========================
+   MOBILE OPTIMIZATION
+=========================== */
+@media (max-width: 600px) {
+  .swal-responsive {
+    width: 90% !important;
+    padding: 16px !important;
   }
 
-  @media (max-width: 670px) {
-    .header h4 {
-      font-size: 18px;
-    } 
-    .footer p{
-      font-size: 12px;
-    }
-    .footer p a{
-      text-decoration: none;
-      
-    }
+  .swal2-title {
+    font-size: 18px !important;
   }
-    
-  
+
+  .swal2-html-container {
+    font-size: 14px !important;
+  }
+
+  .swal2-confirm {
+    width: 100% !important;
+    font-size: 14px !important;
+  }
+}
+/* REMEMBER ME CHECKBOX */
+.remember-me {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  accent-color: #17a2b8; /* nice brand color */
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .remember-label {
+    font-size: 13px;
+  }
+
+  .remember-label input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+
+/* SweetAlert2 toast responsive */
+.swal-toast {
+  width: 90% !important;
+  max-width: 400px !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 600px) {
+  .swal-toast {
+    width: 95% !important;
+  }
+}

@@ -1,45 +1,173 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EVMS Login</title>
+  <title>EVMS | Employee Vacation Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-  <!-- Header -->
-  <div class="header">
-    <h4>Employee Vacation Management System</h4>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">EVMS</div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" (click)="toggleMenu()">☰</div>
+
+  <!-- NAV -->
+  <nav class="nav" [class.active]="menuOpen">
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">How It Works</a>
+    <a href="#">Contact</a>
+    <a routerLink="/register" class="btn-outline">Sign Up</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+  <!-- LEFT -->
+  <div class="hero-text">
+    <h1>Employee Vacation Management System</h1>
+    <p>
+      Simplify employee leave requests, approvals,
+      and tracking with a secure and efficient system.
+    </p>
+
+    <div class="hero-stats">
+      <div>
+        <h3>500+</h3>
+        <span>Employees</span>
+      </div>
+      <div>
+        <h3>1200+</h3>
+        <span>Requests</span>
+      </div>
+      <div>
+        <h3>99%</h3>
+        <span>Uptime</span>
+      </div>
+    </div>
   </div>
 
-  <!-- Login Form -->
-  <div class="container">
-    <div class="login-card">
-      <h5 class="login-title">USER LOGIN</h5>
-      <form class="p-3" (ngSubmit)="login()" #loginForm="ngForm" method="post">
-        <div class="form-group mb-3">
-            <label for="Username">Username</label>
-            <input type="email" class="form-control" [(ngModel)]="username" placeholder="Username" name="username" required>  
+  <!-- LOGIN CARD -->
+  <div class="login-card">
+    <h5 class="login-title">USER LOGIN</h5>
+
+    <form #loginForm="ngForm"
+          (ngSubmit)="login()"
+          class="p-3">
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email"
+               name="username"
+               [(ngModel)]="username"
+               #usernameModel="ngModel"
+               required
+               placeholder="Enter your email">
+
+        <small *ngIf="usernameModel.invalid && usernameModel.touched">
+          Please enter a valid email address
+        </small>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group password-group">
+        <label>Password</label>
+
+        <div class="password-wrapper">
+          <input [type]="showPassword ? 'text' : 'password'"
+                 name="password"
+                 [(ngModel)]="password"
+                 #passwordModel="ngModel"
+                 required
+                 minlength="6"
+                 placeholder="Enter your password">
+
+          <span class="toggle-password"
+                (click)="togglePassword()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </span>
         </div>
-        <div class="form-group mb-5">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" name="password" required>
-        </div>
-        <button type="submit">login</button><br>
-        <p class="signup-text">I haven't account <a routerLink="/register">Sign up</a></p>
-        
-          
+
+        <small *ngIf="passwordModel.invalid && passwordModel.touched">
+          Password must be at least 6 characters
+        </small>
+      </div>
+
+      <div class="form-group remember-me">
+        <label class="remember-label">
+        <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+        Remember Me
+        </label>
+      </div>
+
+
+      <!-- SUBMIT -->
+      <button type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+      <p class="signup-text">
+        Don’t have an account?
+        <a routerLink="/register">Create one</a>
+      </p>
     </form>
-    <div class="form-wrapper">
-        <div *ngIf="message" [ngClass]="['custom-alert', messageClass]">
-          {{ message }}
-        </div>
-    </div>
-    </div>
-  </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>&#169;2025 EVMS. All rights are reserved | designed by <a href="https://mrsolid.netlify.app/">mrsolidy</a></p>
+    <!-- ALERT -->
+    <div class="form-wrapper">
+      <div *ngIf="message" [ngClass]="['custom-alert', messageClass]">
+        {{ message }}
+      </div>
+    </div>
+
   </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <h2>Why Choose EVMS?</h2>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <h4>📅 Easy Requests</h4>
+      <p>Submit vacation requests quickly.</p>
+    </div>
+    <div class="feature-card">
+      <h4>✔ Fast Approval</h4>
+      <p>Managers approve in real time.</p>
+    </div>
+    <div class="feature-card">
+      <h4>🔒 Secure</h4>
+      <p>JWT-secured authentication.</p>
+    </div>
+    <div class="feature-card">
+      <h4>📊 Dashboard</h4>
+      <p>Track leave balances.</p>
+    </div>
+    <div class="feature-card">
+      <h4>⏱ SLA Alerts</h4>
+      <p>Never miss approvals.</p>
+    </div>
+    <div class="feature-card">
+      <h4>📱 Responsive</h4>
+      <p>Works on all devices.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>
+    © 2025 Employee Vacation Management System <br>
+    Designed & Developed by
+    <a href="https://abra25.github.io/solidy/" target="_blank">mrsolidy</a>
+  </p>
+</footer>
+
 </body>
 </html>
