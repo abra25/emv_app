@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>EVMS | Employee Vacation Management</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
 </head>
 
 <body>
@@ -17,10 +22,9 @@
 
   <!-- NAV -->
   <nav class="nav" [class.active]="menuOpen">
-    <a href="#">Home</a>
-    <a href="#">Features</a>
-    <a href="#">How It Works</a>
-    <a href="#">Contact</a>
+    <a href="#features">Features</a>
+    <a href="#hwork">How It Works</a>
+    <a href="#contact">Contact</a>
     <a routerLink="/register" class="btn-outline">Sign Up</a>
   </nav>
 </header>
@@ -88,9 +92,9 @@
                  minlength="6"
                  placeholder="Enter your password">
 
-          <span class="toggle-password"
-                (click)="togglePassword()">
-            {{ showPassword ? 'Hide' : 'Show' }}
+          <span class="toggle-password" (click)="togglePassword()">
+            <i class="fa-solid" 
+              [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
           </span>
         </div>
 
@@ -128,37 +132,110 @@
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <h2>Why Choose EVMS?</h2>
+<div class="features-grid">
+  <div class="feature-card">
+    <i class="fa-solid fa-calendar-check"></i>
+    <h4>Easy Requests</h4>
+    <p>Submit vacation requests quickly.</p>
+  </div>
 
-  <div class="features-grid">
-    <div class="feature-card">
-      <h4>📅 Easy Requests</h4>
-      <p>Submit vacation requests quickly.</p>
+  <div class="feature-card">
+    <i class="fa-solid fa-check-double"></i>
+    <h4>Fast Approval</h4>
+    <p>Managers approve in real time.</p>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-shield-halved"></i>
+    <h4>Secure System</h4>
+    <p>JWT-secured authentication.</p>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-chart-pie"></i>
+    <h4>Smart Dashboard</h4>
+    <p>Track leave balances easily.</p>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-bell"></i>
+    <h4>SLA Alerts</h4>
+    <p>Never miss approvals.</p>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-mobile-screen-button"></i>
+    <h4>Responsive</h4>
+    <p>Works on all devices.</p>
+  </div>
+</div>
+
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p class="section-subtitle">
+    Reach us anytime — we’re happy to help
+  </p>
+
+  <div class="contact-grid">
+
+    <!-- CONTACT INFO -->
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <h4>Location</h4>
+          <p>Bububu, Zanzibar</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <h4>Phone</h4>
+          <p><a href="tel:0777617786">0777 617 786</a></p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-share-nodes"></i>
+        <div>
+          <h4>Social Media</h4>
+          <div class="social-icons">
+            <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a class="whatsapp" href="https://wa.me/255777617786" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="feature-card">
-      <h4>✔ Fast Approval</h4>
-      <p>Managers approve in real time.</p>
+
+    <!-- SUBSCRIBE -->
+    <div class="subscribe-box">
+      <i class="fa-solid fa-envelope-open-text subscribe-icon"></i>
+      <h4>Subscribe to EVMS</h4>
+      <p>
+        Get updates, feature releases, and HR tips straight to your inbox.
+      </p>
+
+      <form>
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" placeholder="Enter your email address" required>
+        </div>
+        <button type="submit">
+          <i class="fa-solid fa-paper-plane"></i>
+          Subscribe
+        </button>
+      </form>
     </div>
-    <div class="feature-card">
-      <h4>🔒 Secure</h4>
-      <p>JWT-secured authentication.</p>
-    </div>
-    <div class="feature-card">
-      <h4>📊 Dashboard</h4>
-      <p>Track leave balances.</p>
-    </div>
-    <div class="feature-card">
-      <h4>⏱ SLA Alerts</h4>
-      <p>Never miss approvals.</p>
-    </div>
-    <div class="feature-card">
-      <h4>📱 Responsive</h4>
-      <p>Works on all devices.</p>
-    </div>
+
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -168,6 +245,33 @@
     <a href="https://abra25.github.io/solidy/" target="_blank">mrsolidy</a>
   </p>
 </footer>
+<button id="backToTop" title="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const backToTop = document.getElementById("backToTop");
+
+    // Show button after scrolling 150px
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        backToTop.style.display = "flex";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+
+    // Smooth scroll to top
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
+
 
 </body>
 </html>
